@@ -1,0 +1,42 @@
+<div>
+  <h2 id="design">Tree node structure</h2>
+    <table id="table" border="2" cellpadding="5"cellspacing="5">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="pointer" *ngFor="let node of rootElements" (click)="onRowClick(node)">
+          <td>{{ node.id }}</td>
+          <td>{{ node.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Popup -->
+  <div *ngIf="selectedNode" class="popup">
+    <div class="popup-content">
+      <h2>Child Elements of {{ selectedNode.name }}</h2>
+      <table border="2" cellpadding="5"cellspacing="5">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>RefMenuId</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let child of selectedNode.children">
+            <td>{{ child.id }}</td>
+            <td>{{ child.refMenuId }}</td>
+            <td>{{ child.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button (click)="closePopup()" id="btn">Close</button>
+    </div>
+  </div>
+  
